@@ -56,70 +56,87 @@
 //     }
 // }
 
-var numberOfBusttuns = document.querySelectorAll(".drum").length;
-
-for (var i = 0; i < numberOfBusttuns; i++) {
-    document.querySelectorAll(".drum")[i].addEventListener("click", function Keyclick() {
-        var bottunsClick = this.innerHTML;
-        keySound(bottunsClick);
-        SetfalshActive(bottunsClick);
-    })
-}
-
-document.addEventListener("keypress" , function(event){
-    keySound(event.key);
-    SetfalshActive(event.key);
-})
-
-function keySound(key) {
-    switch (key) {
-        case "w":
-            var tom1 = new Audio("sounds/tom-1.mp3");
-            tom1.play();
-            break;
-
-        case "a":
-            var tom2 = new Audio("sounds/tom-2.mp3");
-            tom2.play();
-            break;
-
-        case "s":
-            var tom3 = new Audio("sounds/tom-3.mp3");
-            tom3.play();
-            break;
 
 
-        case "d":
-            var tom4 = new Audio("sounds/tom-4.mp3");
-            tom4.play();
-            break;
+// =======----- Practice One Finiding Charecters -----=========== GPT test 1
+// const result = {};
+
+// document.addEventListener("keydown", function(event) {
+
+//   const key = event.key;
+
+//   if (key === " ") return;
+
+//   if (result[key]) {
+//     result[key]++;
+//   } else {
+//     result[key] = 1;
+//   }
+
+//   console.log(result);
+// });
 
 
-        case "j":
-            var crash = new Audio("sounds/crash.mp3");
-            crash.play();
-            break;
+// =========------ Remove Duplicates ------========= GPT test 2
+// function duplicateNumbers (numbers){
+// const filterNumber = [];
 
-        case "k":
-            var kickbass = new Audio("sounds/kick-bass.mp3");
-            kickbass.play();
-            break;
+// for(var i of numbers ){
+//   if(!filterNumber.includes(i)){
+// filterNumber.push(i);
+//   } 
+// }
+// return filterNumber;
+// }
+// console.log(duplicateNumbers([1,2,3,4,4,5,6,7,7]));
 
-        case "l":
-            var snare = new Audio("sounds/snare.mp3");
-            snare.play();
-            break;
 
-        default:
-            break;
+
+// ========----- Finding most Repeatet Arrayes-----=========== GPT test 3
+// function duplicateNumbers (numbers){
+// const mostReapetNumber = [];
+// for(const i of numbers){
+//   if(mostReapetNumber[i]){
+//     mostReapetNumber[i]++;
+//   }else {
+//     mostReapetNumber[i] = 1 ;
+//   }
+// }
+
+// let result = [];
+// let maxcount = 0 ;
+// for(const max in mostReapetNumber){
+//   if (mostReapetNumber[max] > maxcount){
+//     maxcount = mostReapetNumber[max];
+//     result = max ;
+//   }
+// }
+// return result;
+// }
+// console.log(duplicateNumbers([1,2,3,4,4,5,6,7,7,7,7]));
+
+
+//=========----- Filtering Arrays -----============ GPT test 4
+const users = [
+  { name: "Ali", age: 20 },
+  { name: "Sara", age: 25 },
+  { name: "Reza", age: 20 },
+  { name: "Mina", age: 25 },
+  { name: "John", age: 30 }
+];
+
+function groupUsers(users, ages) {
+  const resutl = {};
+
+  for (const i of users) {
+    if (resutl[i[ages]]) {
+      resutl[i[ages]].push(i);
+    } else {
+      resutl[i[ages]] = [i] ;
     }
+  }
+  return resutl;
 }
+console.log(groupUsers(users, "age"));
 
-function buttonsAnimations (SetfalshActive){
-    var buttonsActive = document.querySelector("." + SetfalshActive);
-    buttonsActive.classList.add("pressed") ;
 
-    setTimeout (function(){
-        buttonsActive.classList.remove("pressed") ; 
-    },100)
-    }
