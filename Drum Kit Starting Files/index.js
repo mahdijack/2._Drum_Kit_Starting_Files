@@ -117,26 +117,71 @@
 
 
 //=========----- Filtering Arrays -----============ GPT test 4
-const users = [
-  { name: "Ali", age: 20 },
-  { name: "Sara", age: 25 },
-  { name: "Reza", age: 20 },
-  { name: "Mina", age: 25 },
-  { name: "John", age: 30 }
-];
+// const users = [
+//   { name: "Ali", age: 20 },
+//   { name: "Sara", age: 25 },
+//   { name: "Reza", age: 20 },
+//   { name: "Mina", age: 25 },
+//   { name: "John", age: 30 }
+// ];
 
-function groupUsers(users, ages) {
-  const resutl = {};
+// function groupUsers(users, ages) {
+//   const resutl = {};
 
-  for (const i of users) {
-    if (resutl[i[ages]]) {
-      resutl[i[ages]].push(i);
-    } else {
-      resutl[i[ages]] = [i] ;
-    }
+//   for (const i of users) {
+//     if (resutl[i[ages]]) {
+//       resutl[i[ages]].push(i);
+//     } else {
+//       resutl[i[ages]] = [i] ;
+//     }
+//   }
+//   return resutl;
+// }
+// console.log(groupUsers(users, "age"));
+
+
+//=========----- Constacrtor not a Clone -----============ GPT test 5 
+// const original = {
+//   name: "Ali",
+//   age: 25,
+//   address: {
+//     city: "Tehran"
+//   }
+// };
+// function deepClone (name , age , address ){
+//     this.name = name ;
+//     this.age = age ;
+//     this.address = address ; 
+// }
+// console.log(original);
+// var copy = new deepClone ("tomi" , 33 , {address : "la"} );
+// copy.address.city = "Shiraz"; 
+// console.log(copy);
+
+//=========----- Deep colne -----============ GPT test 5 right Answer
+const original = {
+  name: "Ali",
+  age: 25,
+  address: {
+    city: "Tehran"
   }
-  return resutl;
+};
+
+function deepClone(object) {
+  const copy = {};
+
+  for (const key in object) {
+if(typeof object[key] === "object"){
+  copy[key] = deepClone(object[key]);
+}else {
+  copy[key] = object[key];
 }
-console.log(groupUsers(users, "age"));
+}
+return copy;
+}
+const copy = deepClone(original);
 
+copy.address.city = "Shiraz";
 
+console.log(original);
+console.log(copy);
