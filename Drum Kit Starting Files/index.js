@@ -213,32 +213,6 @@
 // console.log(original);
 // console.log(copy1);
 
-const original = {
-  name: "Ali",
-  age: 25,
-  address: {
-    city: "Tehran"
-  }
-};
-
-function deepColne (object){
-const copy = {};
-for (const i in object){
-  if (typeof object[i] === "object"){
-    copy[i] = deepColne(object[i]);
-  }else {
-    copy[i] = object[i];
-  }
-}
-return copy ;
-}
-const copy1 = deepColne(original);
-copy1.address.city = "shiraz"
-console.log(original);
-console.log(copy1);
-
-
-
 //=========----- حذف موارد تکراری از Object -----============ GPT test
 // const users = [
 //   { name: "Ali", age: 20 },
@@ -273,6 +247,33 @@ console.log(copy1);
 // }
 
 // console.log(removeDuplicates(users, "age"));
+
+const users = [
+  { name: "Ali", age: 20 },
+  { name: "Sara", age: 25 },
+  { name: "Reza", age: 20 },
+  { name: "Mina", age: 25 },
+  { name: "John", age: 30 }
+];
+
+function filteringDuplicates(users, ages) {
+  const filtering = [];
+
+  for (const i of users) {
+    var exist = flase;
+    
+    for (const n in filtering) {
+      if (n[ages] === i[ages]) {
+        exist = true;
+      }
+    }
+    if (!exist) {
+      filtering.push(i);
+    }
+  }
+  return filtering;
+}
+console.log(filteringDuplicates(users, "age"));
 
 
 //=========----- تمرین ۶ — Memoization -----============ GPT test 6
