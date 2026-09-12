@@ -160,26 +160,29 @@
 // var copy = new deepClone ("tomi" , 33 , {address : "la"} );
 // copy.address.city = "Shiraz";
 // console.log(copy);
-const original = {
-  name: "Ali",
-  age: 25,
-  address: {
-    city: "Tehran"
-  }
-};
 
-function DeepCloning (object){
-  this.name = object.name ;
-    this.age = object.age ;
-    this.address = {
-      city: object.address.city
-    } ;
-}
 
-console.log(DeepCloning(original));
-var copy = new DeepCloning(original);
-copy.address.city = "Shiraz";
-console.log(copy);
+//=========----- Constacrtor2not a Clone  -----============ GPT test 5
+// const original = {
+//   name: "Ali",
+//   age: 25,
+//   address: {
+//     city: "Tehran"
+//   }
+// };
+
+// function DeepCloning (object){
+//   this.name = object.name ;
+//     this.age = object.age ;
+//     this.address = {
+//       city: object.address.city
+//     } ;
+// }
+
+// console.log(DeepCloning(original));
+// var copy = new DeepCloning(original);
+// copy.address.city = "Shiraz";
+// console.log(copy);
 
 
 
@@ -210,6 +213,29 @@ console.log(copy);
 // console.log(original);
 // console.log(copy1);
 
+const original = {
+  name: "Ali",
+  age: 25,
+  address: {
+    city: "Tehran"
+  }
+};
+
+function deepColne (object){
+const copy = {};
+for (const i in object){
+  if (typeof object[i] === "object"){
+    copy[i] = deepColne(object[i]);
+  }else {
+    copy[i] = object[i];
+  }
+}
+return copy ;
+}
+const copy1 = deepColne(original);
+copy1.address.city = "shiraz"
+console.log(original);
+console.log(copy1);
 
 
 
