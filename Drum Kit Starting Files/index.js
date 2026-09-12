@@ -142,27 +142,6 @@
 // console.log(groupUsers(users, "age"));
 
 
-const users = [
-  { name: "Ali", age: 20 },
-  { name: "Sara", age: 25 },
-  { name: "Reza", age: 20 },
-  { name: "Mina", age: 25 },
-  { name: "John", age: 30 }
-];
-
-function FilteringAges (users , ages){
-const filtered = {};
-
-for(const i of users){
-  if (filtered[i[ages]]){
-    filtered[i[ages]].push(i);
-  }else {
-    filtered[i[ages]] = [i];
-  }
-}
-return filtered;
-}
-console.log(FilteringAges(users, "age"));
 
 //=========----- Constacrtor not a Clone -----============ GPT test 5
 // const original = {
@@ -181,6 +160,26 @@ console.log(FilteringAges(users, "age"));
 // var copy = new deepClone ("tomi" , 33 , {address : "la"} );
 // copy.address.city = "Shiraz";
 // console.log(copy);
+const original = {
+  name: "Ali",
+  age: 25,
+  address: {
+    city: "Tehran"
+  }
+};
+
+function DeepCloning (object){
+  this.name = object.name ;
+    this.age = object.age ;
+    this.address = {
+      city: object.address.city
+    } ;
+}
+
+console.log(DeepCloning(original));
+var copy = new DeepCloning(original);
+copy.address.city = "Shiraz";
+console.log(copy);
 
 
 
