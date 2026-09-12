@@ -92,6 +92,7 @@
 
 
 
+
 // ========----- Finding most Repeatet Arrayes-----=========== GPT test 3
 // function duplicateNumbers (numbers){
 // const mostReapetNumber = [];
@@ -115,6 +116,30 @@
 // }
 // console.log(duplicateNumbers([1,2,3,4,4,5,6,7,7,7,7]));
 
+
+
+function mostRepeatNumber(numbers) {
+
+  const reapetedNumbers = [];
+   for (const i of numbers){
+    if(reapetedNumbers[i]){
+      reapetedNumbers[i]++;
+    }else {
+      reapetedNumbers[i] = 1; 
+    }
+   }
+  let result = [];
+  let maxNumber = 0 ;
+   for (const n in reapetedNumbers ){
+    if (reapetedNumbers[n] > maxNumber){
+      maxNumber = reapetedNumbers[n] ;
+      result = n ;
+    }
+   }
+
+  return result;
+}
+console.log(mostRepeatNumber([1, 2, 3, 4, 4, 5, 6, 7, 7, 7, 7]));
 
 //=========----- Filtering Arrays -----============ GPT test 4
 // const users = [
@@ -140,7 +165,7 @@
 // console.log(groupUsers(users, "age"));
 
 
-//=========----- Constacrtor not a Clone -----============ GPT test 5 
+//=========----- Constacrtor not a Clone -----============ GPT test 5
 // const original = {
 //   name: "Ali",
 //   age: 25,
@@ -151,37 +176,98 @@
 // function deepClone (name , age , address ){
 //     this.name = name ;
 //     this.age = age ;
-//     this.address = address ; 
+//     this.address = address ;
 // }
 // console.log(original);
 // var copy = new deepClone ("tomi" , 33 , {address : "la"} );
-// copy.address.city = "Shiraz"; 
+// copy.address.city = "Shiraz";
 // console.log(copy);
 
+
+
 //=========----- Deep colne -----============ GPT test 5 right Answer
-const original = {
-  name: "Ali",
-  age: 25,
-  address: {
-    city: "Tehran"
-  }
-};
+// const original = {
+//   name: "Ali",
+//   age: 25,
+//   address: {
+//     city: "Tehran"
+//   }
+// };
 
-function deepClone(object) {
-  const copy = {};
+// function DeepColne(object){
+//   const copy = {};
 
-  for (const key in object) {
-if(typeof object[key] === "object"){
-  copy[key] = deepClone(object[key]);
-}else {
-  copy[key] = object[key];
-}
-}
-return copy;
-}
-const copy = deepClone(original);
+// for (const i in object){
+//   if (typeof object[i] === "object"){
+//     copy[i] = DeepColne(object[i]);
+//   }else {
+//     copy[i] = object[i] ;
+//   }
+// }
+//   return copy ;
+// }
+// const copy1 = DeepColne(original);
+// copy1.address.city = "Bushehr" ;
 
-copy.address.city = "Shiraz";
+// console.log(original);
+// console.log(copy1);
 
-console.log(original);
-console.log(copy);
+
+
+
+//=========----- حذف موارد تکراری از Object -----============ GPT test
+// const users = [
+//   { name: "Ali", age: 20 },
+//   { name: "Sara", age: 25 },
+//   { name: "Reza", age: 20 },
+//   { name: "Mina", age: 25 },
+//   { name: "John", age: 30 }
+// ];
+
+// function removeDuplicates(users, ages) {
+
+//   const result = [];
+
+//   for (const i of users) {
+
+//     let exists = false;
+
+//     for (const user of result) {
+
+//       if (user[ages] === i[ages]) {
+//         exists = true;
+//       }
+
+//     }
+
+//     if (!exists) {
+//       result.push(i);
+//     }
+//   }
+
+//   return result;
+// }
+
+// console.log(removeDuplicates(users, "age"));
+
+
+//=========----- تمرین ۶ — Memoization -----============ GPT test 6
+
+
+
+//=========----- تمرین ۷ — Promise Queue -----============ GPT test 7
+
+
+
+//=========----- تمرین ۸ — Event Emitter -----============ GPT test 8
+
+
+
+//=========----- تمرین ۹ — Promise Pool -----============ GPT test 9
+
+
+
+//=========----- یک Shopping Cart Engine بدون فریم‌ورک بنویس -----============ GPT test 10
+
+
+
