@@ -118,29 +118,6 @@
 
 
 
-function mostRepeatNumber(numbers) {
-
-  const reapetedNumbers = [];
-   for (const i of numbers){
-    if(reapetedNumbers[i]){
-      reapetedNumbers[i]++;
-    }else {
-      reapetedNumbers[i] = 1; 
-    }
-   }
-  let result = [];
-  let maxNumber = 0 ;
-   for (const n in reapetedNumbers ){
-    if (reapetedNumbers[n] > maxNumber){
-      maxNumber = reapetedNumbers[n] ;
-      result = n ;
-    }
-   }
-
-  return result;
-}
-console.log(mostRepeatNumber([1, 2, 3, 4, 4, 5, 6, 7, 7, 7, 7]));
-
 //=========----- Filtering Arrays -----============ GPT test 4
 // const users = [
 //   { name: "Ali", age: 20 },
@@ -164,6 +141,28 @@ console.log(mostRepeatNumber([1, 2, 3, 4, 4, 5, 6, 7, 7, 7, 7]));
 // }
 // console.log(groupUsers(users, "age"));
 
+
+const users = [
+  { name: "Ali", age: 20 },
+  { name: "Sara", age: 25 },
+  { name: "Reza", age: 20 },
+  { name: "Mina", age: 25 },
+  { name: "John", age: 30 }
+];
+
+function FilteringAges (users , ages){
+const filtered = {};
+
+for(const i of users){
+  if (filtered[i[ages]]){
+    filtered[i[ages]].push(i);
+  }else {
+    filtered[i[ages]] = [i];
+  }
+}
+return filtered;
+}
+console.log(FilteringAges(users, "age"));
 
 //=========----- Constacrtor not a Clone -----============ GPT test 5
 // const original = {
