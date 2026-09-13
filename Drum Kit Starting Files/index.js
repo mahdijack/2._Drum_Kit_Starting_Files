@@ -261,7 +261,7 @@
 
 //   for (const i of users) {
 //     var exist = false;
-    
+
 //     for (const n of filtering) {
 //       if (n[ages] === i[ages]) {
 //         exist = true;
@@ -287,36 +287,36 @@
 // console.log(add(3 , 5));
 // console.log(cache(add));
 
+
+
+
+
 const cache = {};
-
 function memorize(fn) {
+    return function (a, b) {
+        const key = a + "," + b;
+        if (cache[key]) {
+            return cache[key];
+        }
 
-  return function(a, b) {
+        const result = fn(a, b);
+        cache[key] = result;
 
-    const key = a + "," + b;
-
-    if (cache[key]) {
-      return cache[key];
-    }
-
-    const result = fn(a, b);
-
-    cache[key] = result;
-
-    return result;
-  };
+        return result;
+    };
 }
 
 function add(a, b) {
-  console.log("محاسبه شد");
-  return a + b;
+    console.log("Calculated");
+    return a + b;
 }
 
-const newAdd = memorize(add);
+const cacheMemorize = memorize(add);
 
-console.log(newAdd(3, 5));
-console.log(newAdd(3, 5));
-console.log(newAdd(3, 5));
+console.log(cacheMemorize(3, 5));
+console.log(cacheMemorize(3, 5));
+console.log(cacheMemorize(3, 5));
+
 
 
 //=========----- تمرین ۷ — Promise Queue -----============ GPT test 7
