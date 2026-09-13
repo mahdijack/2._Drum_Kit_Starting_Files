@@ -248,36 +248,75 @@
 
 // console.log(removeDuplicates(users, "age"));
 
-const users = [
-  { name: "Ali", age: 20 },
-  { name: "Sara", age: 25 },
-  { name: "Reza", age: 20 },
-  { name: "Mina", age: 25 },
-  { name: "John", age: 30 }
-];
+// const users = [
+//   { name: "Ali", age: 20 },
+//   { name: "Sara", age: 25 },
+//   { name: "Reza", age: 20 },
+//   { name: "Mina", age: 25 },
+//   { name: "John", age: 30 }
+// ];
 
-function filteringDuplicates(users, ages) {
-  const filtering = [];
+// function filteringDuplicates(users, ages) {
+//   const filtering = [];
 
-  for (const i of users) {
-    var exist = flase;
+//   for (const i of users) {
+//     var exist = false;
     
-    for (const n in filtering) {
-      if (n[ages] === i[ages]) {
-        exist = true;
-      }
-    }
-    if (!exist) {
-      filtering.push(i);
-    }
-  }
-  return filtering;
-}
-console.log(filteringDuplicates(users, "age"));
+//     for (const n of filtering) {
+//       if (n[ages] === i[ages]) {
+//         exist = true;
+//       }
+//     }
+//     if (!exist) {
+//       filtering.push(i);
+//     }
+//   }
+//   return filtering;
+// }
+// console.log(filteringDuplicates(users, "age"));
 
 
 //=========----- تمرین ۶ — Memoization -----============ GPT test 6
 
+// const cache = function memorize(add){
+//     return add (4 , 7);
+// };
+// function add( a , b) {
+//     return a + b ;
+// }
+// console.log(add(3 , 5));
+// console.log(cache(add));
+
+const cache = {};
+
+function memorize(fn) {
+
+  return function(a, b) {
+
+    const key = a + "," + b;
+
+    if (cache[key]) {
+      return cache[key];
+    }
+
+    const result = fn(a, b);
+
+    cache[key] = result;
+
+    return result;
+  };
+}
+
+function add(a, b) {
+  console.log("محاسبه شد");
+  return a + b;
+}
+
+const newAdd = memorize(add);
+
+console.log(newAdd(3, 5));
+console.log(newAdd(3, 5));
+console.log(newAdd(3, 5));
 
 
 //=========----- تمرین ۷ — Promise Queue -----============ GPT test 7
